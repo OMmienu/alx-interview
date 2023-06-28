@@ -1,5 +1,5 @@
-#!/usrbin/python3
-"""a function that returns a list of integers"""
+#!/usr/bin/python3
+"""a function that computes pascal triangle"""
 
 
 def pascal_triangle(n):
