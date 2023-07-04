@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""0x01.Lockboxes"""
+"""0x01. Lockboxes"""
 
 
 def canUnlockAll(boxes):
-    """A Function that determines if all the
-    boxes can be opened given a list of boxes"""
+    """ determines if all the
+    boxes can be opened"""
     keys = set([0])
     unlocked = []
     boxes_copy = boxes[:]
