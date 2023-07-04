@@ -3,7 +3,7 @@
 
 
 def canUnlockAll(boxes):
-    """A Function that determines if all the 
+    """A Function that determines if all the
     boxes can be opened given a list of boxes"""
     keys = set([0])
     unlocked = []
