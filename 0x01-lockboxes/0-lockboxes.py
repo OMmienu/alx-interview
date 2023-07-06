@@ -2,23 +2,26 @@
 """0x01. Lockboxes"""
 
 
+def unlocker(box, openboxes, boxes):
+    """Unlock the boxes"""
+    if len(boxes) == len(openboxes):
+        return openboxes
+    for value in box:
+        if value >= len(boxes):
+            continue
+        if value not in openboxes:
+            openboxes.add(value)
+            unlocker(boxes[value], openboxes, boxes)
+    return openboxes
+
+
 def canUnlockAll(boxes):
-    """ determines if all the
-    boxes can be opened"""
-    keys = set([0])
-    unlocked = []
-    boxes_copy = boxes[:]
-
-    while True:
-        try:
-            key = keys.pop()
-            keys.update(boxes_copy[key])
-            unlocked.append(boxes_copy[key])
-            boxes_copy[key] = []
-        except KeyError:
-            break
-
-    for box in boxes:
-        if box not in unlocked:
-            return False
-    return True
+    """Check if unlocked"""
+    openboxes = {0}
+    if len(boxes) == 1:
+        return True
+    unlocked = unlocker(boxes[0], openboxes, boxes)
+    if len(unlocked) == len(boxes):
+        return True
+    else:
+        return False
