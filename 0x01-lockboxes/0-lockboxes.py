@@ -1,27 +1,17 @@
 #!/usr/bin/python3
-"""0x01. Lockboxes"""
+"""lockboxes challenge"""
 
 
-def unlocker(box, openboxes, boxes):
-    """Unlock the boxes"""
-    if len(boxes) == len(openboxes):
-        return openboxes
-    for value in box:
-        if value >= len(boxes):
-            continue
-        if value not in openboxes:
-            openboxes.add(value)
-            unlocker(boxes[value], openboxes, boxes)
-    return openboxes
-
-
-def canUnlockAll(boxes):
-    """Check if unlocked"""
-    openboxes = {0}
-    if len(boxes) == 1:
-        return True
-    unlocked = unlocker(boxes[0], openboxes, boxes)
-    if len(unlocked) == len(boxes):
-        return True
-    else:
-        return False
+def canUnlockAll(newList):
+    """lock box function"""
+    pack = [0]
+    for x in range(len(newList)):
+        for y in newList[x]:
+            if not (y == x):
+                pack.append(y)
+        if x not in pack:
+            for z in range(x+1, len(newList)):
+                [pack.append(k) for k in newList[z]]
+            if x not in pack:
+                return False
+    return True
